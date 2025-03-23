@@ -1,117 +1,133 @@
-# Fypper
-Fypper is a free platform designed to form final year project teams by matching compatible teammates, connecting with supervisors who have relevant expertise, and securing industry sponsorships and mentorship opportunities. It is a web application made with a strong focus on user-friendly experience.
+# Fypper - Project Setup Guide
 
-# React + Flask App Setup Guide
+## Introduction
+Fypper is a platform designed to streamline the Final Year Project (FYP) process by connecting students, supervisors, and industry professionals. This guide provides instructions on setting up and running the project locally.
 
-Welcome to the React + Flask app! This guide will walk you through the steps to set up and run the project.
+## Prerequisites
+Ensure you have the following installed before proceeding:
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [MongoDB](https://www.mongodb.com/) (running locally or via a cloud service like MongoDB Atlas)
+- [Git](https://git-scm.com/)
+- [VS Code](https://code.visualstudio.com/) or any preferred IDE
+- [Yarn](https://yarnpkg.com/) (recommended) or npm
 
----
+## Installation
 
-## **Video Followed**
-https://www.youtube.com/watch?v=7LNl2JlZKHA
+### Clone the Repository
+```sh
+git clone https://github.com/Faiz-Ul-Hassan92/Fypper
+cd fypper
+```
 
-**Disclaimer** The video I used to follow it was done by using basic react. I used Vite + React. Everything is same except the running and building configurations
+### Install Dependencies
+Run the following command inside the project directory:
+```sh
+yarn install
+```
+Or, if using npm:
+```sh
+npm install
+```
 
-## 🚀 **Prerequisites**
-Ensure you have the following installed on your system:
-- **Python** 
-- **Node.js** 
-- **npm** (comes with Node.js)
-- **pip** (Python's package installer)
-
----
-
-## ⚙️ **Backend Setup (Flask)**
-
-1. **Create a virtual environment:**
-   ```bash
-   python -m venv venv
-   ```
-2. **Activate the virtual environment:**
-   - **Windows:**
-     ```bash
-     venv\Scripts\activate
-     ```
-   - **Mac/Linux:**
-     ```bash
-     source venv/bin/activate
-     ```
-3. **Install Flask and CORS:**
-   ```bash
-   pip install flask flask-cors
-   ```
-4. **Run the Flask server:**
-   ```bash
-   python server.py
-   ```
-5. The backend should now be running at:
-   ```
-   http://127.0.0.1:5000
-   ```
-
----
-
-## 🌟 **Frontend Setup (React + Vite)**
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-2. **Start the React development server:**
-   ```bash
-   npm run dev
-   ```
-3. The frontend should now be running at (usually):
-   ```
-   http://localhost:5173
-   ```
-
----
-
-## 🔥 **Connecting Frontend and Backend**
-
-1. Ensure the **proxy** is correctly set in `package.json`:
-   ```json
-   "proxy": "http://127.0.0.1:5000"
-   ```
-2. The `useEffect` hook in `App.jsx` should correctly fetch data from the backend:
-   ```javascript
-   fetch("/members")
-     .then(res => res.json())
-     .then(data => setData(data))
-     .catch(error => console.error("Error fetching members:", error));
-   ```
-
----
-
-## ✅ **Testing**
-
-1. Start both the backend and frontend servers simultaneously.
-2. Open your browser and visit the frontend URL (usually `http://localhost:5173`).
-3. Verify the member data fetched from Flask is correctly displayed.
-
----
-
-## 📦 **Troubleshooting**
-
-- **Proxy issues:**
-  Ensure both the frontend and backend servers are running on the correct ports.
-- **CORS errors:**
-  Double-check that `flask-cors` is installed and correctly used in `server.py`:
-  ```python
-  from flask_cors import CORS
-  CORS(app)
-  ```
-- **Dependency errors:**
-  If there are missing packages, reinstall dependencies:
-  ```bash
-  npm install
-  pip install flask flask-cors
-  ```
-
----
-
-Happy coding! 🎉
+### Setup Environment Variables
+Create a `.env` file in the root directory and add the following configuration:
+```env
+MONGODB_URI=mongodb://localhost:27017/fypper
+PORT=5000
+```
 
 
+### Start MongoDB
+If running locally, start MongoDB:
+```sh
+mongod
+```
+Or use MongoDB Compass or Atlas for cloud-based storage.
+
+### Run the Development Server
+```sh
+yarn dev
+```
+Or, if using npm:
+```sh
+npm run dev
+```
+
+The application should now be running at `http://localhost:3000/`.
+
+## Folder Structure
+```
+app/
+│── admin/
+│   ├── bots/
+│   ├── chat-complaints/
+│   ├── components/
+│   ├── dashboard/
+│   ├── forum-complaints/
+│   ├── manage-recruiters/
+│   ├── manage-students/
+│   ├── manage-supervisors/
+│   ├── index.tsx
+│
+│── api/
+│   ├── login/
+│   ├── signup/
+│
+│── recruiter/
+│   ├── applications/
+│   ├── chat/
+│   ├── components/
+│   ├── dashboard/
+│   ├── past-fyps/
+│   ├── projects/
+│   ├── index.tsx
+│
+│── registration/
+│   ├── login/
+│   ├── recruiter-info/
+│   ├── signup/
+│   ├── student-profile/
+│   ├── supervisor-profile/
+│   ├── waiting-approval/
+│   ├── index.tsx
+│
+│── student/
+│   ├── bots/
+│   ├── browse-fyps/
+│   ├── chat/
+│   ├── components/
+│   ├── dashboard/
+│   ├── find-recruiter/
+│   ├── find-student/
+│   ├── find-supervisor/
+│   ├── group-formation/
+│   ├── open-forum/
+│   ├── request-recruiter/
+│   ├── request-supervisor/
+│   ├── index.tsx
+│
+│── supervisor/
+│   ├── bots/
+│   ├── chat/
+│   ├── components/
+│   ├── current-fyps/
+│   ├── dashboard/
+│   ├── fyp-repo/
+│   ├── give-reference/
+│   ├── manage-proposals/
+│   ├── post-topic/
+│   ├── schedule-meetings/
+│   ├── index.tsx
+│
+│── globals.css
+│── package.json
+│── README.md
+```
+
+## Contributing
+Feel free to open an issue or submit a pull request if you'd like to contribute.
+
+
+## Contact
+For any inquiries, contact `i220818@nu.edu.pk`.
 
